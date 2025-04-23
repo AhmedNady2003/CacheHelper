@@ -1,4 +1,3 @@
-
 name: Publish to NuGet
 
 on:
@@ -20,13 +19,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore DeltaCore.CacheHelper/DeltaCore.CacheHelper.csproj
 
       - name: Build project
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build DeltaCore.CacheHelper/DeltaCore.CacheHelper.csproj --configuration Release --no-restore
 
       - name: Pack project
-        run: dotnet pack --configuration Release --no-build -o ./nupkgs
+        run: dotnet pack DeltaCore.CacheHelper/DeltaCore.CacheHelper.csproj --configuration Release --no-build -o ./nupkgs
 
       - name: Push to NuGet
         run: dotnet nuget push ./nupkgs/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
