@@ -7,7 +7,7 @@
 
 		<!-- NuGet Info -->
 		<PackageId>DeltaCore.CacheHelper</PackageId>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<Authors>Ahmed Nady</Authors>
 		<Company>DeltaCore</Company>
 		<Description>Lightweight memory and Redis caching helper for .NET apps</Description>

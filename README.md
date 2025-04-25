@@ -41,7 +41,7 @@ public class SomeService
 
     public void SetItem()
     {
-        _cache.SetData("user:1", new { Name = "Ahmed", Age = 21 });
+        _cache.SetData<object>("user:1", new { Name = "Ahmed", Age = 21 });
     }
 
     public object? GetItem()
@@ -58,7 +58,7 @@ public class SomeService
 You can also pass custom expiration:
 ```csharp
 var options = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(15));
-_cache.SetData("key", value, options);
+_cache.SetData<T>("key", <T>value, options);
 ```
 
 ### 2. RedisCacheService (Distributed)
@@ -74,7 +74,7 @@ public class SomeService
 
     public async Task SetAsync()
     {
-        await _cache.SetDataAsync("product:1", new { Id = 1, Name = "Bread" });
+        await _cache.SetDataAsync<object>("product:1", new { Id = 1, Name = "Bread" });
     }
 
     public async Task<object?> GetAsync()
@@ -94,7 +94,7 @@ var options = new DistributedCacheEntryOptions
 {
     AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
 };
-await _cache.SetDataAsync("key", value, options);
+await _cache.SetDataAsync<T>("key", <T>value, options);
 ```
 ---
 ## Configuration
